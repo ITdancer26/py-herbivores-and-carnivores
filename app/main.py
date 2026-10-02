@@ -22,25 +22,16 @@ class Animal:
 
     @classmethod
     def show_alive(cls) -> None:
-        print(cls.alive)
+        return (cls.alive)
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
-        if self.hidden:
-            state = "Hide"
-        else:
-            state = "Come out"
-        print(f"{self.name} {state}.")
 
 
 class Carnivore(Animal):
     def bite(self, target: Animal) -> None:
         if isinstance(target, Herbivore):
-            if target.hidden:
-                print(f"{target.name} Hide")
-            else:
+            if not target.hidden:
                 target.take_damage(50)
-        else:
-            print(f"{self.name} cannot bite another carnivore.")
